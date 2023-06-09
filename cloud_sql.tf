@@ -7,7 +7,7 @@ resource "google_sql_database_instance" "career" {
   deletion_protection = false // I set this to false because this is a test task and I will delete it later.
 
   settings {
-    tier = var.tier
+    tier = var.database_instance_tier
     backup_configuration {
       enabled = true
     }
