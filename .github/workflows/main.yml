@@ -16,6 +16,11 @@ jobs:
       - name: Checkout GitHub Code
         uses: actions/checkout@v2
 
+      - name: Retrieve credentials from secret
+        run: echo "$GOOGLE_CREDENTIALS" > credentials.json
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
       - name: Configure GCP credentials
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
