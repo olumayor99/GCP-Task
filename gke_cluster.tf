@@ -14,22 +14,6 @@ resource "google_container_cluster" "career_cluster" {
   }
 }
 
-# Create GCE instances as cluster nodes
-resource "google_container_node_pool" "career_node_pool" {
-  name       = "career-node-pool"
-  location   = var.region
-  cluster    = google_container_cluster.career_cluster.name
-  node_count = 3
-  autoscaling {
-    min_node_count = 1
-    max_node_count = 5
-  }
-  management {
-    auto_repair  = true
-    auto_upgrade = true
-  }
-}
-
 # Create a firewall rule for cluster traffic
 resource "google_compute_firewall" "career_cluster_firewall" {
   name    = "career-cluster-firewall"
@@ -52,7 +36,7 @@ resource "google_compute_disk" "career_disk" {
   zone  = var.availability_zone
 }
 
-# Attach Persistent Disk to GKE cluster
+# Create GCE instances as cluster nodes and attach Persistent Disk to GKE cluster
 resource "google_container_node_pool" "career_node_pool" {
   name       = "career-node-pool"
   location   = var.region

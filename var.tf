@@ -10,7 +10,7 @@ variable "bucket_name" {
   default     = "bucket-for-career-task"
 }
 
-variable "bucket_name" {
+variable "bucket_type" {
   type        = string
   description = "The type of the bucket."
   default     = "STANDARD"
