@@ -1,6 +1,6 @@
 # Define the provider for Google Cloud Platform
 provider "google" {
-  credentials = file(var.credentials_file)
+  // credentials = file(var.credentials_file)
   project     = "career-project"
   region      = "us-central1"
 }
