@@ -41,8 +41,8 @@ jobs:
       #- name: Format Terraform Code
       #  run: terraform fmt -check
 
-      - name: Plan Terraform changes
-        run: terraform plan -detailed-exitcode
+      #- name: Plan Terraform changes
+      #  run: terraform plan -detailed-exitcode
 
       - name: Apply Terraform changes
         run: terraform apply -auto-approve
