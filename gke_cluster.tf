@@ -1,12 +1,12 @@
 # Create a GKE cluster
 resource "google_container_cluster" "career_cluster" {
   name               = "career-cluster"
-  location           = "<region>"
+  location           = var.region
   initial_node_count = 3
 
   master_auth {
-    username = ""
-    password = ""
+    username = "admin"               //Very bad practice, only doing this because of the time limit. Use secrets instead.
+    password = "admin"
 
     client_certificate_config {
       issue_client_certificate = false
@@ -15,9 +15,9 @@ resource "google_container_cluster" "career_cluster" {
 }
 
 # Create GCE instances as cluster nodes
-resource "google_container_node_pool" "default_node_pool" {
-  name       = "default-node-pool"
-  location   = "<region>"
+resource "google_container_node_pool" "career_node_pool" {
+  name       = "career-node-pool"
+  location   = var.region
   cluster    = google_container_cluster.career_cluster.name
   node_count = 3
   autoscaling {
@@ -49,13 +49,13 @@ resource "google_compute_disk" "career_disk" {
   name  = "career-persistent-disk"
   type  = "pd-standard"
   size  = 100
-  zone  = "<zone>"
+  zone  = var.availability_zone
 }
 
 # Attach Persistent Disk to GKE cluster
 resource "google_container_node_pool" "career_node_pool" {
   name       = "career-node-pool"
-  location   = "<region>"
+  location   = var.region
   cluster    = google_container_cluster.career_cluster.name
   node_count = 3
   autoscaling {

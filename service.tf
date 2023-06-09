@@ -2,7 +2,7 @@
 resource "kubernetes_service" "nginx_service" {
   metadata {
     name      = "nginx-service"
-    namespace = kubernetes_namespace.nginx_namespace.metadata.0.name
+    namespace = kubernetes_namespace.career_namespace.metadata.0.name
   }
 
   spec {

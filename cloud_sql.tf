@@ -1,6 +1,7 @@
+# Create Database instance
 resource "google_sql_database_instance" "career" {
-  name             = "career-db-instance"
-  database_version = "MYSQL_5_7"
+  name             = var.database_instance_name
+  database_version = var.database_version
   region           = var.region
   tier             = var.tier
 
@@ -23,8 +24,9 @@ resource "google_sql_database_instance" "career" {
   }
 }
 
+# Create Database
 resource "google_sql_database" "career" {
-  name     = "career-db"
+  name     = var.database_name
   instance = google_sql_database_instance.career.name
   charset  = "utf8"
   collation = "utf8_general_ci"

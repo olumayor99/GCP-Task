@@ -7,7 +7,7 @@ variable "credentials_file" {
 variable "bucket_name" {
   type        = string
   description = "The name of the bucket."
-  default     = "christy-bucket-for-career-task"
+  default     = "bucket-for-career-task"
 }
 
 variable "bucket_name" {
@@ -25,7 +25,13 @@ variable "namespace" {
 variable "database_instance_name" {
   type        = string
   description = "The name of the database instance."
-  default     = "my-database-instance"
+  default     = "db-instance"
+}
+
+variable "database_version" {
+  type        = string
+  description = "The version of the database."
+  default     = "MYSQL_5_7"
 }
 
 variable "database_instance_tier" {
@@ -37,13 +43,13 @@ variable "database_instance_tier" {
 variable "database_name" {
   type        = string
   description = "The name of the database."
-  default     = "my-database"
+  default     = "task-database"
 }
 
 variable "project_name" {
   type        = string
   description = "The name of the project."
-  default     = "career-project"
+  default     = "scrapper-335714"
 }
 
 variable "region" {
