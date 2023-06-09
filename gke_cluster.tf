@@ -3,15 +3,6 @@ resource "google_container_cluster" "career_cluster" {
   name               = "career-cluster"
   location           = var.region
   initial_node_count = 3
-
-  master_auth {
-    username = "admin"               //Very bad practice, only doing this because of the time limit. Use secrets instead.
-    password = "admin"
-
-    client_certificate_config {
-      issue_client_certificate = false
-    }
-  }
 }
 
 # Create a firewall rule for cluster traffic
@@ -54,6 +45,5 @@ resource "google_container_node_pool" "career_node_pool" {
   node_config {
     disk_size_gb = google_compute_disk.career_disk.size
     disk_type    = "pd-standard"
-    disk_name    = google_compute_disk.career_disk.name
   }
 }
